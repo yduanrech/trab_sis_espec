@@ -26,53 +26,53 @@ function validateStep(step) {
 }
 
 function calcularConsumo() {
-    var adultos = parseInt($('#adultosQuantidade').val());
-    var criancas = parseInt($('#criancasQuantidade').val());
-    var duracao = parseInt($('#duracaoHoras').val());
+  var adultos = parseInt($('#adultosQuantidade').val()) || 0;
+  var criancas = parseInt($('#criancasQuantidade').val()) || 0;
+  var duracao = parseInt($('#duracaoHoras').val());
 
-    var selecoesCarnes = $('.step-3 .form-check-input:checked').map(function() {
+  var selecoesCarnes = $('.step-3 .form-check-input:checked').map(function() {
       return $(this).val();
-    }).get();
+  }).get();
 
-    var selecoesBebidas = $('.step-4 .form-check-input:checked').map(function() {
+  var selecoesBebidas = $('.step-4 .form-check-input:checked').map(function() {
       return $(this).val();
-    }).get();
+  }).get();
 
-    var quantCarnes = selecoesCarnes.length;
+  var quantCarnes = selecoesCarnes.length;
 
-    var carnePorAdulto, carnePorCrianca;
-    if (duracao === 1) {  // Menos de 2 horas
+  var carnePorAdulto, carnePorCrianca;
+  if (duracao === 1) {
       carnePorAdulto = 500;
       carnePorCrianca = 200;
-    } else if (duracao === 2) {  // Entre 2 e 5 horas
+  } else if (duracao === 2) {
       carnePorAdulto = 700;
       carnePorCrianca = 300;
-    } else if (duracao === 3) {  // Mais que 5 horas
+  } else if (duracao === 3) {
       carnePorAdulto = 850;
       carnePorCrianca = 350;
-    }
+  }
 
-    var carnePorTipoAdulto = carnePorAdulto / quantCarnes;
-    var carnePorTipoCrianca = carnePorCrianca / quantCarnes;
+  var carnePorTipoAdulto = carnePorAdulto / quantCarnes;
+  var carnePorTipoCrianca = carnePorCrianca / quantCarnes;
 
-    var resultadoCarnes = {};
-    selecoesCarnes.forEach(function(tipo) {
+  var resultadoCarnes = {};
+  selecoesCarnes.forEach(function(tipo) {
       resultadoCarnes[tipo] = {
-        'adultos': parseFloat(carnePorTipoAdulto.toFixed(0)) * adultos + 'g',
-        'criancas': parseFloat(carnePorTipoCrianca.toFixed(0)) * criancas + 'g'
+          'adultos': parseFloat(carnePorTipoAdulto.toFixed(0)) * adultos + 'g',
+          'criancas': parseFloat(carnePorTipoCrianca.toFixed(0)) * criancas + 'g'
       };
-    });
+  });
 
-    var totalCerveja = selecoesBebidas.includes("Cerveja") ? 6 * adultos + ' latas' : "0 latas";
-    var totalRefri = selecoesBebidas.includes("Refrigerante") ? (3 * adultos + criancas) + ' latas' : "0 latas";
-    var totalVodka = selecoesBebidas.includes("Vodka") ? adultos + ' garrafas' : "0 garrafas";
+  var totalCerveja = selecoesBebidas.includes("Cerveja") ? 6 * adultos + ' latas' : "0 latas";
+  var totalRefri = selecoesBebidas.includes("Refrigerante") ? (3 * adultos + 2 * criancas) + ' latas' : "0 latas";
+  var totalVodka = selecoesBebidas.includes("Vodka") ? adults + ' garrafas' : "0 garrafas";
 
-    localStorage.setItem('resultadoCarnes', JSON.stringify(resultadoCarnes));
-    localStorage.setItem('totalCerveja', totalCerveja);
-    localStorage.setItem('totalRefri', totalRefri);
-    localStorage.setItem('totalVodka', totalVodka);
+  localStorage.setItem('resultadoCarnes', JSON.stringify(resultadoCarnes));
+  localStorage.setItem('totalCerveja', totalCerveja);
+  localStorage.setItem('totalRefri', totalRefri);
+  localStorage.setItem('totalVodka', totalVodka);
 
-    console.log('Cálculo realizado com sucesso!');
+  console.log('Cálculo realizado com sucesso!');
 }
 
 $(document).ready(function() {
@@ -123,25 +123,26 @@ function validateStep(step) {
 
   // Validação para inputs e selects
   $step.find('input:required, select:required').each(function() {
-    if (!this.checkValidity()) {
-      $(this).addClass('is-invalid'); // Adiciona classe para visualização de erro
-      isValid = false;
-    } else {
-      $(this).removeClass('is-invalid');
-    }
+      if (!this.checkValidity()) {
+          $(this).addClass('is-invalid'); // Adiciona classe para visualização de erro
+          isValid = false;
+      } else {
+          $(this).removeClass('is-invalid');
+      }
   });
 
   // Validação específica para checkboxes nos passos 3 e 4
   if (step === 3 || step === 4) {
-    var checkedCount = $step.find('.form-check-input:checked').length;
-    if (checkedCount === 0) {
-      $step.find('.form-check-label').first().addClass('text-danger'); // Adiciona marcação visual de erro
-      isValid = false;
-    } else {
-      $step.find('.form-check-label').removeClass('text-danger');
-    }
+      var checkedCount = $step.find('.form-check-input:checked').length;
+      if (checkedCount === 0) {
+          $step.find('.form-check-label').addClass('text-danger'); // Adiciona classe de erro a todos os labels
+          isValid = false;
+      } else {
+          $step.find('.form-check-label').removeClass('text-danger'); // Remove classe de erro
+      }
   }
 
   return isValid;
 }
+
 

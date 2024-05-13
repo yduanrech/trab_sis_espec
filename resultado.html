@@ -67,36 +67,36 @@
   <script src="script.js"></script>
   <script>
     var resultadoCarnes = JSON.parse(localStorage.getItem('resultadoCarnes'));
-  var tbody = document.getElementById('tabela-resultados');
-  
-  Object.keys(resultadoCarnes).forEach(function(tipo) {
-    var row = `<tr>
-                <td>${tipo}</td>
-                <td>${resultadoCarnes[tipo].adultos}</td>
-                <td>${resultadoCarnes[tipo].criancas}</td>
-              </tr>`;
-    tbody.innerHTML += row;
-  });
+var tbody = document.getElementById('tabela-resultados');
 
-  // Adicionando as bebidas
-  var cervejas = localStorage.getItem('totalCerveja') || '0 latas';
-  var refris = localStorage.getItem('totalRefri') || '0 latas';
-  var vodkas = localStorage.getItem('totalVodka') || '0 garrafas';
-  
-  var bebidas = [
-    { nome: "Cervejas", quantidade: cervejas, crianca: "0" },
-    { nome: "Refrigerantes", quantidade: refris, crianca: refris },
-    { nome: "Vodkas", quantidade: vodkas, crianca: "0" }
-  ];
+Object.keys(resultadoCarnes).forEach(function(tipo) {
+  var row = `<tr>
+              <td>${tipo}</td>
+              <td>${resultadoCarnes[tipo].adultos}</td>
+              <td>${resultadoCarnes[tipo].criancas}</td>
+            </tr>`;
+  tbody.innerHTML += row;
+});
 
-  bebidas.forEach(function(bebida) {
-    var row = `<tr>
-                <td>${bebida.nome}</td>
-                <td>${bebida.quantidade}</td>
-                <td>${bebida.crianca}</td>
-              </tr>`;
-    tbody.innerHTML += row;
-  });
+// Adicionando as bebidas
+var cervejas = localStorage.getItem('totalCerveja') || '0 latas';
+var refris = localStorage.getItem('totalRefri') || '0 latas';
+var vodkas = localStorage.getItem('totalVodka') || '0 garrafas';
+
+var bebidas = [
+  { nome: "Cervejas", quantidade: cervejas, crianca: "0" },
+  { nome: "Refrigerantes", quantidade: refris, crianca: "0" }, // Ajuste para apresentar corretamente as quantidades
+  { nome: "Vodkas", quantidade: vodkas, crianca: "0" }
+];
+
+bebidas.forEach(function(bebida) {
+  var row = `<tr>
+              <td>${bebida.nome}</td>
+              <td>${bebida.quantidade}</td>
+              <td>${bebida.crianca}</td>
+            </tr>`;
+  tbody.innerHTML += row;
+});
   </script>
 </body>
 </html>

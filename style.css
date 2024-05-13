@@ -36,3 +36,7 @@
   #multi-step-form{
     overflow-x: hidden;
   }
+
+.text-danger {
+    color: #dc3545; /* Cor vermelha típica para erros */
+}
