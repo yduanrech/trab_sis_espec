@@ -123,23 +123,26 @@ function validateStep(step) {
 
   // Validação para inputs e selects
   $step.find('input:required, select:required').each(function() {
-      if (!this.checkValidity()) {
-          $(this).addClass('is-invalid'); // Adiciona classe para visualização de erro
-          isValid = false;
-      } else {
-          $(this).removeClass('is-invalid');
-      }
+    if (!this.checkValidity()) {
+      $(this).addClass('is-invalid'); // Adiciona classe para visualização de erro
+      isValid = false;
+    } else {
+      $(this).removeClass('is-invalid');
+    }
   });
 
   // Validação específica para checkboxes nos passos 3 e 4
   if (step === 3 || step === 4) {
-      var checkedCount = $step.find('.form-check-input:checked').length;
-      if (checkedCount === 0) {
-          $step.find('.form-check-label').addClass('text-danger'); // Adiciona classe de erro a todos os labels
-          isValid = false;
-      } else {
-          $step.find('.form-check-label').removeClass('text-danger'); // Remove classe de erro
-      }
+    var checkedCount = $step.find('.form-check-input:checked').length;
+    var errorMessageDiv = $step.find('.text-danger'); // Assume que você tem apenas um div com class 'text-danger'
+    if (checkedCount === 0) {
+      $step.find('.form-check-label').addClass('text-danger');
+      errorMessageDiv.show(); // Mostra a mensagem de erro
+      isValid = false;
+    } else {
+      $step.find('.form-check-label').removeClass('text-danger');
+      errorMessageDiv.hide(); // Oculta a mensagem de erro
+    }
   }
 
   return isValid;

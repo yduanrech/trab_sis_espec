@@ -107,7 +107,7 @@
                           Linguiça
                         </label>
                     </div>
-                    
+                    <div id="error-message-step3" class="text-danger" style="display:none;">Por favor, selecione pelo menos uma opção de carne.</div>
                 </div>
             <button type="button" class="btn btn-primary prev-step">Previous</button>
             <button type="button" class="btn btn-primary next-step">Next</button>
@@ -115,26 +115,27 @@
 
           <div class="step step-4">
             <!-- Step 4 form fields here -->
-            <h3>Step 4</h3>
-            <div class="mb-3">
+              <h3>Step 4</h3>
+              <div class="mb-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="Cerveja" id="Cerveja">
+                  <label class="form-check-label" for="cerveja">
+                    Cerveja
+                  </label>
+              </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Cerveja" id="Cerveja">
-                <label class="form-check-label" for="cerveja">
-                  Cerveja
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Refrigerante" id="Refrigerante">
-                <label class="form-check-label" for="refrigerante">
-                  Refrigerante
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Vodka" id="Vodka">
-                <label class="form-check-label" for="vodka">
-                  Vodka
-                </label>
-            </div>
+                  <input class="form-check-input" type="checkbox" value="Refrigerante" id="Refrigerante">
+                  <label class="form-check-label" for="refrigerante">
+                    Refrigerante
+                  </label>
+              </div>
+              <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="Vodka" id="Vodka">
+                  <label class="form-check-label" for="vodka">
+                    Vodka
+                  </label>
+              </div>
+              <div id="error-message-step4" class="text-danger" style="display:none;">Por favor, selecione pelo menos uma opção de bebida.</div>
             </div>
             <button type="button" class="btn btn-primary prev-step">Previous</button>
             <button type="submit" class="btn btn-success">Submit</button>
