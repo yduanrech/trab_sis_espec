@@ -65,7 +65,7 @@ function calcularConsumo() {
 
   var totalCerveja = selecoesBebidas.includes("Cerveja") ? 6 * adultos + ' latas' : "0 latas";
   var totalRefri = selecoesBebidas.includes("Refrigerante") ? (3 * adultos + 2 * criancas) + ' latas' : "0 latas";
-  var totalVodka = selecoesBebidas.includes("Vodka") ? adults + ' garrafas' : "0 garrafas";
+  var totalVodka = selecoesBebidas.includes("Vodka") ? adultos + ' garrafas' : "0 garrafas";
 
   localStorage.setItem('resultadoCarnes', JSON.stringify(resultadoCarnes));
   localStorage.setItem('totalCerveja', totalCerveja);
