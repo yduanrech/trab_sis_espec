@@ -53,12 +53,12 @@
               <input type="text" class="form-control" id="field1" name="field1"> -->
 
               <label for="adultosQuantidade" class="form-label">Adultos</label>
-              <input type="number" class="form-control" id="adultosQuantidade" placeholder="Quantidade">
+              <input type="number" class="form-control" id="adultosQuantidade" placeholder="Quantidade" required>
 
-              <label for="criancasQuantidade" class="form-label">Crianças</label>
-              <input type="number" class="form-control" id="criancasQuantidade" placeholder="Quantidade">
+              <label for="criancasQuantidade" required class="form-label">Crianças</label>
+              <input type="number" required class="form-control" id="criancasQuantidade" placeholder="Quantidade" required>
             </div>
-            <button type="button" class="btn btn-primary next-step">Next</button>
+            <button type="button" class="btn btn-primary next-step">Avançar</button>
           </div>
       
           <div class="step step-2">
@@ -69,15 +69,15 @@
               <input type="text" class="form-control" id="field2" name="field2"> -->
               
 
-              <select class="form-select" id="duracaoHoras" aria-label="Default select example">
-                <option selected>Selecione as horas</option>
+              <select class="form-select" id="duracaoHoras" required aria-label="Default select example">
+                <option value="" selected>Selecione as horas</option>
                 <option value="1">2 Horas</option>
                 <option value="2">Entre 2 e 5 horas</option>
                 <option value="3">Mais que 5 horas</option>
               </select>
             </div>
-            <button type="button" class="btn btn-primary prev-step">Previous</button>
-            <button type="button" class="btn btn-primary next-step">Next</button>
+            <button type="button" class="btn btn-primary prev-step">Voltar</button>
+            <button type="button" class="btn btn-primary next-step">Avançar</button>
           </div>
       
           <div class="step step-3">
@@ -85,27 +85,27 @@
             <h3>Step 3</h3>
                 <div class="mb-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Cupim" id="cupim">
+                        <input class="form-check-input" type="checkbox" value="Cupim" id="cupim" name="carne">
                         <label class="form-check-label" for="cupim">
                           Cupim
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Alcatra" id="alcatra">
+                        <input class="form-check-input" type="checkbox" value="Alcatra" id="alcatra" name="carne">
                         <label class="form-check-label" for="alcatra">
                           Alcatra
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Linguiça" id="linguica">
+                        <input class="form-check-input" type="checkbox" value="Linguiça" id="linguica" name="carne">
                         <label class="form-check-label" for="linguica">
                           Linguiça
                         </label>
                     </div>
                     
                 </div>
-            <button type="button" class="btn btn-primary prev-step">Previous</button>
-            <button type="button" class="btn btn-primary next-step">Next</button>
+            <button type="button" class="btn btn-primary prev-step">Voltar</button>
+            <button type="button" class="btn btn-primary next-step">Avançar</button>
           </div>
 
           <div class="step step-4">
@@ -113,26 +113,26 @@
             <h3>Step 4</h3>
             <div class="mb-3">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Cerveja" id="Cerveja">
+                <input class="form-check-input" type="checkbox" value="Cerveja" id="Cerveja" name="bebida">
                 <label class="form-check-label" for="cerveja">
                   Cerveja
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Refrigerante" id="Refrigerante">
+                <input class="form-check-input" type="checkbox" value="Refrigerante" id="Refrigerante" name="bebida">
                 <label class="form-check-label" for="refrigerante">
                   Refrigerante
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Vodka" id="Vodka">
+                <input class="form-check-input" type="checkbox" value="Vodka" id="Vodka" name="bebida">
                 <label class="form-check-label" for="vodka">
                   Vodka
                 </label>
             </div>
             </div>
-            <button type="button" class="btn btn-primary prev-step">Previous</button>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="button" class="btn btn-primary prev-step">Voltar</button>
+            <button type="submit" class="btn btn-success">Enviar</button>
           </div>
         </form>
       </div>

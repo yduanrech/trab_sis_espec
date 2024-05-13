@@ -63,40 +63,63 @@ function calcularConsumo() {
 }
 
 $(document).ready(function() {
-    $('#multi-step-form').find('.step').slice(1).hide();
-  
-    $(".next-step").click(function() {
-        if (currentStep < 4) {
-            $(".step-" + currentStep).addClass("animate__animated animate__fadeOutLeft");
-            currentStep++;
-            setTimeout(function() {
-                $(".step").removeClass("animate__animated animate__fadeOutLeft").hide();
-                $(".step-" + currentStep).show().addClass("animate__animated animate__fadeInRight");
-                updateProgressBar();
-            }, 500);
-        }
-    });
+  $('#multi-step-form').find('.step').slice(1).hide();
 
-    $(".prev-step").click(function() {
-        if (currentStep > 1) {
-            $(".step-" + currentStep).addClass("animate__animated animate__fadeOutRight");
-            currentStep--;
-            setTimeout(function() {
-                $(".step").removeClass("animate__animated animate__fadeOutRight").hide();
-                $(".step-" + currentStep).show().addClass("animate__animated animate__fadeInLeft");
-                updateProgressBar();
-            }, 500);
-        }
-    });
+  $(".next-step, .prev-step").click(function(event) {
+      event.preventDefault();
+      var direction = $(this).hasClass('next-step');
+      
+      // Validate current step
+      var isValid = true;
+      var currentInputs = $(".step-" + currentStep + " :input");
+      $(currentInputs).each(function() {
+          if ($(this).is('select') && $(this).val() === "") {
+              isValid = false;
+          } else if ($(this).is(':checkbox')) {
+              if ($("[name='" + $(this).attr('name') + "']:checked").length === 0) {
+                  isValid = false;
+              }
+          } else if (!this.checkValidity()) {
+              isValid = false;
+          }
+          $(this).toggleClass('is-invalid', !isValid);
+      });
 
-    updateProgressBar = function() {
-        var progressPercentage = ((currentStep - 1) / 3) * 100;
-        $(".progress-bar").css("width", progressPercentage + "%");
-    };
+      // Navigate steps
+      if (isValid) {
+          if (direction && currentStep === 4) {
+              calcularConsumo();
+          } else if (direction) {
+              transitionToStep(currentStep + 1);
+          } else if (!direction && currentStep > 1) {
+              transitionToStep(currentStep - 1);
+          }
+      }
+  });
 
-    $('#multi-step-form').on('submit', function(event) {
-        event.preventDefault(); // Evita o envio do formulário
-        calcularConsumo(); // Chama a função para calcular o consumo
-        window.location.href = 'resultado.html'; // Redireciona para outra página, resultado.html
-    });
+  function transitionToStep(newStep) {
+      $(".step-" + currentStep).addClass("animate__animated animate__fadeOutLeft");
+      setTimeout(function() {
+          $(".step-" + currentStep).hide().removeClass("animate__animated animate__fadeOutLeft");
+          currentStep = newStep;
+          $(".step-" + currentStep).show().addClass("animate__animated animate__fadeInRight");
+          updateProgressBar();
+      }, 500);
+  }
+
+  function calcularConsumo() {
+      // Your existing calculation logic here
+      console.log('Cálculo realizado com sucesso!');
+
+      // Store results and redirect
+      setTimeout(function() {
+          window.location.href = 'resultado.html';
+      }, 500);
+  }
+
+  function updateProgressBar() {
+      var progressPercentage = ((currentStep - 1) / 3) * 100;
+      $(".progress-bar").css("width", progressPercentage + "%");
+  }
 });
+

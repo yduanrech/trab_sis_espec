@@ -36,3 +36,12 @@
   #multi-step-form{
     overflow-x: hidden;
   }
+
+  .is-invalid, .is-invalid .form-check-input {
+    border-color: #dc3545;
+    background-color: #ffcccc;
+}
+
+.form-check.is-invalid .form-check-input {
+    border-color: #dc3545;
+}
