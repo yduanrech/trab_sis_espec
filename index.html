@@ -71,12 +71,15 @@
               <input type="text" class="form-control" id="field2" name="field2"> -->
               
 
-              <select class="form-select" id="duracaoHoras" aria-label="Default select example">
-                <option selected>Selecione as horas</option>
+              <select class="form-select" id="duracaoHoras" aria-label="Default select example" required>
+                <option value="" disabled selected>Selecione as horas</option>
                 <option value="1">2 Horas</option>
                 <option value="2">Entre 2 e 5 horas</option>
                 <option value="3">Mais que 5 horas</option>
               </select>
+              <div class="invalid-feedback">
+                Por favor, escolha uma duração válida.
+              </div>
             </div>
             <button type="button" class="btn btn-primary prev-step">Previous</button>
             <button type="button" class="btn btn-primary next-step">Next</button>

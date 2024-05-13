@@ -116,3 +116,32 @@ $(document).ready(function() {
         window.location.href = 'resultado.html';
     });
 });
+
+function validateStep(step) {
+  var $step = $(`.step-${step}`);
+  var isValid = true; // Assume que o passo é válido
+
+  // Validação para inputs e selects
+  $step.find('input:required, select:required').each(function() {
+    if (!this.checkValidity()) {
+      $(this).addClass('is-invalid'); // Adiciona classe para visualização de erro
+      isValid = false;
+    } else {
+      $(this).removeClass('is-invalid');
+    }
+  });
+
+  // Validação específica para checkboxes nos passos 3 e 4
+  if (step === 3 || step === 4) {
+    var checkedCount = $step.find('.form-check-input:checked').length;
+    if (checkedCount === 0) {
+      $step.find('.form-check-label').first().addClass('text-danger'); // Adiciona marcação visual de erro
+      isValid = false;
+    } else {
+      $step.find('.form-check-label').removeClass('text-danger');
+    }
+  }
+
+  return isValid;
+}
+
