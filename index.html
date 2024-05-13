@@ -67,8 +67,14 @@
             <div class="mb-3">
              <!-- <label for="field2" class="form-label">Field 2:</label>
               <input type="text" class="form-control" id="field2" name="field2"> -->
-              <label for="duracaoHoras" class="form-label">Horas</label>
-              <input type="number" class="form-control" id="duracaoHoras" placeholder="Quantidade">
+              
+
+              <select class="form-select" id="duracaoHoras" aria-label="Default select example">
+                <option selected>Selecione as horas</option>
+                <option value="1">2 Horas</option>
+                <option value="2">Entre 2 e 5 horas</option>
+                <option value="3">Mais que 5 horas</option>
+              </select>
             </div>
             <button type="button" class="btn btn-primary prev-step">Previous</button>
             <button type="button" class="btn btn-primary next-step">Next</button>
@@ -77,10 +83,10 @@
           <div class="step step-3">
             <!-- Step 3 form fields here -->
             <h3>Step 3</h3>
-            <div class="mb-3">
-                <label for="carnes" class="form-label">carnes</label>
-                <input type="number" class="form-control" id="carnes" placeholder="carnes">
-            </div>
+                <div class="mb-3">
+                    <label for="duracaoHoras" class="form-label">Horas</label>
+                    <input type="number" class="form-control" id="duracaoHoras" placeholder="Quantidade">
+                </div>
             <button type="button" class="btn btn-primary prev-step">Previous</button>
             <button type="button" class="btn btn-primary next-step">Next</button>
           </div>

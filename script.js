@@ -47,7 +47,7 @@ function displayStep(stepNumber) {
         // Captura os valores
         var adultos = $('#adultosQuantidade').val();
         var criancas = $('#criancasQuantidade').val();
-        var duracao = $('#duracaoHoras').val();
+        var duracao = $('#duracaoHoras').val(); // Pega o valor do select
         var carnes = $('#carnes').val();
         var bebidas = $('#bebidas').val();
         // Salva no localStorage
