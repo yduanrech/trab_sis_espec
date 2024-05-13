@@ -44,7 +44,7 @@
           <div class="step-circle" onclick="displayStep(4)">4</div>
         </div>
       
-        <form id="multi-step-form">
+        <form id="multi-step-form" class="needs-validation" novalidate>
           <div class="step step-1">
             <!-- Step 1 form fields here -->
             <h3>Step 1</h3>
@@ -53,8 +53,10 @@
               <input type="text" class="form-control" id="field1" name="field1"> -->
 
               <label for="adultosQuantidade" class="form-label">Adultos</label>
-              <input type="number" class="form-control" id="adultosQuantidade" placeholder="Quantidade">
-
+              <input type="number" class="form-control" id="adultosQuantidade" placeholder="Quantidade" required min="1">
+              <div class="invalid-feedback">
+                Por favor, insira a quantidade de adultos.
+              </div>
               <label for="criancasQuantidade" class="form-label">Crianças</label>
               <input type="number" class="form-control" id="criancasQuantidade" placeholder="Quantidade">
             </div>
