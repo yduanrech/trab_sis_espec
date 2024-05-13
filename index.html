@@ -52,8 +52,8 @@
             <div id="passo2" class="form-step d-none">
                 <h4>Insira a duração:</h4>
              <div class="mb-3">
-                 <label for="formGroupExampleInput" class="form-label">Horas</label>
-                 <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Quantidade">
+                 <label for="duracaoHoras" class="form-label">Horas</label>
+                 <input type="number" class="form-control" id="duracaoHoras" placeholder="Quantidade">
              </div>
              <button type="button" class="btn btn-primary next-btn">Avançar</button>
             </div>
@@ -79,12 +79,19 @@
     <script>
         $(document).ready(function() {
             let passoAtual = 1;
+            const totalPassos = 2; // Número total de passos no formulário
             $('.next-btn').click(function() {
-                $(`#passo${passoAtual}`).addClass('d-none');
+                const passoAnterior = passoAtual;
                 passoAtual++;
-                $(`#passo${passoAtual}`).removeClass('d-none');
+                if (passoAtual <= totalPassos) {
+                    $(`#passo${passoAnterior}`).addClass('d-none');
+                    $(`#passo${passoAtual}`).removeClass('d-none');
+                } else {
+                    passoAtual--; // Não incrementa se não houver mais passos
+                }
             });
         });
-        </script>
+    </script>
+    
 </body>
 </html>
