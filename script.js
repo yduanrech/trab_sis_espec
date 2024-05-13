@@ -44,18 +44,27 @@ function displayStep(stepNumber) {
 
     $('#multi-step-form').on('submit', function(event) {
         event.preventDefault(); // Evita o envio do formulário
-        // Captura os valores
+
+        // Captura os valores dos checkboxes
+        var selecoes = [];
+        $('.form-check-input:checked').each(function() {
+            selecoes.push($(this).val());
+        });
+        
         var adultos = $('#adultosQuantidade').val();
         var criancas = $('#criancasQuantidade').val();
-        var duracao = $('#duracaoHoras').val(); // Pega o valor do select
+        var duracao = $('#duracaoHoras').val();
         var carnes = $('#carnes').val();
         var bebidas = $('#bebidas').val();
+
         // Salva no localStorage
         localStorage.setItem('adultos', adultos);
         localStorage.setItem('criancas', criancas);
         localStorage.setItem('duracao', duracao);
         localStorage.setItem('carnes', carnes);
         localStorage.setItem('bebidas', bebidas);
+        localStorage.setItem('selecoes', JSON.stringify(selecoes)); // Armazenando como JSON
+
         // Redireciona para outra página, por exemplo, resultado.html
         window.location.href = 'resultado.html';
     });
