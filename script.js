@@ -43,8 +43,8 @@ function calcularConsumo() {
     var resultadoCarnes = {};
     selecoesCarnes.forEach(function(tipo) {
       resultadoCarnes[tipo] = {
-        'adultos': carnePorTipoAdulto * adultos + 'g',
-        'criancas': carnePorTipoCrianca * criancas + 'g'
+        'adultos': parseFloat(carnePorTipoAdulto.toFixed(0)) * adultos + 'g',
+        'criancas': parseFloat(carnePorTipoCrianca.toFixed(0)) * criancas + 'g'
       };
     });
   
