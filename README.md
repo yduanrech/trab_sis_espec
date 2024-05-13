@@ -1,6 +1,6 @@
 # trab_sis_espec
 
-Menos de 3 horas
+Menos de 2 horas
 Carne:
 	Adulto
 	500g
@@ -12,7 +12,7 @@ Bebida:
 	Refri: 3 latas por adulto, 1 lata por criança
 	Vodka: 1 garrafa por adulto
 
-Entre 3 e 5 horas
+Entre 2 e 5 horas
 Carne:
 	Adulto
 	700g
