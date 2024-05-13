@@ -32,8 +32,59 @@
         </div>
       </nav>
 
+    <div class="container">
+        <h2>Início o seu churrasco!</h2>
 
+        <form id="stepForm">
+            <div id="passo1" class="form-step">
+               <h4>Insira a quantidade de pessoas:</h4>
+            <div class="mb-3">
+                <label for="adultosQuantidade" class="form-label">Adultos</label>
+                <input type="number" class="form-control" id="adultosQuantidade" placeholder="Quantidade">
+              </div>
+              <div class="mb-3">
+                <label for="criancasQuantidade" class="form-label">Crianças</label>
+                <input type="number" class="form-control" id="criancasQuantidade" placeholder="Quantidade">
+              </div>
+              <button type="button" class="btn btn-primary next-btn">Avançar</button>
+            </div>
 
+            <div id="passo2" class="form-step d-none">
+                <h4>Insira a duração:</h4>
+             <div class="mb-3">
+                 <label for="formGroupExampleInput" class="form-label">Horas</label>
+                 <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Quantidade">
+             </div>
+             <button type="button" class="btn btn-primary next-btn">Avançar</button>
+            </div>
+            
+        </form>
+    </div>
+
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+          <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+            <img src="/img/icone.ico" alt="Bootstrap" width="40" height="40">
+          </a>
+          <span class="mb-3 mb-md-0 text-body-secondary">© 2024 Company, Inc</span>
+        </div>
+    
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+          <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
+          <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
+          <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+        </ul>
+      </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            let passoAtual = 1;
+            $('.next-btn').click(function() {
+                $(`#passo${passoAtual}`).addClass('d-none');
+                passoAtual++;
+                $(`#passo${passoAtual}`).removeClass('d-none');
+            });
+        });
+        </script>
 </body>
 </html>

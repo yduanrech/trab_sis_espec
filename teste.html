@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Formulário Passo a Passo</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Formulário Passo a Passo</h2>
+    <form id="stepForm">
+        <div id="step1" class="form-step">
+            <label for="campo1">Campo 1:</label>
+            <input type="text" id="campo1" class="form-control mb-3">
+            <button type="button" class="btn btn-primary next-btn">Próximo</button>
+        </div>
+        <div id="step2" class="form-step d-none">
+            <label for="campo2">Campo 2:</label>
+            <input type="text" id="campo2" class="form-control mb-3">
+            <button type="button" class="btn btn-primary next-btn">Próximo</button>
+        </div>
+        <div id="step3" class="form-step d-none">
+            <label for="campo3">Campo 3:</label>
+            <input type="text" id="campo3" class="form-control mb-3">
+            <button type="submit" class="btn btn-success">Enviar</button>
+        </div>
+    </form>
+</div>
+
+<script>
+$(document).ready(function() {
+    let currentStep = 1;
+    $('.next-btn').click(function() {
+        $(`#step${currentStep}`).addClass('d-none');
+        currentStep++;
+        $(`#step${currentStep}`).removeClass('d-none');
+    });
+});
+</script>
+</body>
+</html>
