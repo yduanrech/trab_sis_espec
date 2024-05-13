@@ -1,58 +1,44 @@
-$(document).ready(function() {
-    let currentStep = 0;
-    const steps = ["#step1", "#step2", "#step3"];
-    const maxSteps = steps.length;
+var currentStep = 1;
+var updateProgressBar;
 
-    // Inicia com o botão de voltar escondido
-    $("#prevBtn").hide();
+function displayStep(stepNumber) {
+  if (stepNumber >= 1 && stepNumber <= 3) {
+    $(".step-" + currentStep).hide();
+    $(".step-" + stepNumber).show();
+    currentStep = stepNumber;
+    updateProgressBar();
+  }
+}
 
-    // Lógica para o botão "Próximo"
-    $("#nextBtn").click(function() {
-        // Se não estamos no último passo, avançamos
-        if (currentStep < maxSteps - 1) {
-            $(steps[currentStep]).hide();
-            currentStep++;
-            $(steps[currentStep]).fadeIn();
-            $("#prevBtn").show(); // Mostra o botão de voltar ao avançar
-
-            // Se chegarmos ao último passo, alteramos o texto do botão para "Enviar"
-            if (currentStep === maxSteps - 1) {
-                $("#nextBtn").text("Submit");
-            }
-        } else {
-            // No último passo, chama a função para armazenar os dados
-            storeData();
-        }
+  $(document).ready(function() {
+    $('#multi-step-form').find('.step').slice(1).hide();
+  
+    $(".next-step").click(function() {
+      if (currentStep < 3) {
+        $(".step-" + currentStep).addClass("animate__animated animate__fadeOutLeft");
+        currentStep++;
+        setTimeout(function() {
+          $(".step").removeClass("animate__animated animate__fadeOutLeft").hide();
+          $(".step-" + currentStep).show().addClass("animate__animated animate__fadeInRight");
+          updateProgressBar();
+        }, 500);
+      }
     });
 
-    // Lógica para o botão "Voltar"
-    $("#prevBtn").click(function() {
-        if (currentStep > 0) {
-            $(steps[currentStep]).hide();
-            currentStep--;
-            $(steps[currentStep]).fadeIn();
-
-            // Se voltamos ao primeiro passo, esconde o botão de voltar
-            if (currentStep === 0) {
-                $("#prevBtn").hide();
-            }
-
-            // Certifica-se de que o texto do botão "Próximo" esteja correto
-            $("#nextBtn").text("Next Step");
-        }
+    $(".prev-step").click(function() {
+      if (currentStep > 1) {
+        $(".step-" + currentStep).addClass("animate__animated animate__fadeOutRight");
+        currentStep--;
+        setTimeout(function() {
+          $(".step").removeClass("animate__animated animate__fadeOutRight").hide();
+          $(".step-" + currentStep).show().addClass("animate__animated animate__fadeInLeft");
+          updateProgressBar();
+        }, 500);
+      }
     });
 
-    // Função para armazenar dados no localStorage
-    function storeData() {
-        const formData = {
-            // Aqui você pode adicionar todos os dados que deseja armazenar
-            step1Data: $("#step1 input, #step1 select").serializeArray(),
-            step2Data: $("#step2 input, #step2 select").serializeArray(),
-            step3Data: $("#step3 input, #step3 select").serializeArray()
-        };
-        localStorage.setItem("formData", JSON.stringify(formData));
-        alert("Dados armazenados com sucesso!");
-
-        // Aqui você pode redirecionar o usuário ou mostrar uma mensagem de confirmação
+    updateProgressBar = function() {
+      var progressPercentage = ((currentStep - 1) / 2) * 100;
+      $(".progress-bar").css("width", progressPercentage + "%");
     }
-});
+  });
