@@ -41,4 +41,22 @@ function displayStep(stepNumber) {
       var progressPercentage = ((currentStep - 1) / 3) * 100;
       $(".progress-bar").css("width", progressPercentage + "%");
     }
+
+    $('#multi-step-form').on('submit', function(event) {
+        event.preventDefault(); // Evita o envio do formulário
+        // Captura os valores
+        var adultos = $('#adultosQuantidade').val();
+        var criancas = $('#criancasQuantidade').val();
+        var duracao = $('#duracaoHoras').val();
+        var carnes = $('#carnes').val();
+        var bebidas = $('#bebidas').val();
+        // Salva no localStorage
+        localStorage.setItem('adultos', adultos);
+        localStorage.setItem('criancas', criancas);
+        localStorage.setItem('duracao', duracao);
+        localStorage.setItem('carnes', carnes);
+        localStorage.setItem('bebidas', bebidas);
+        // Redireciona para outra página, por exemplo, resultado.html
+        window.location.href = 'resultado.html';
+    });
   });
