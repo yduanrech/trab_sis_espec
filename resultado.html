@@ -51,22 +51,14 @@
     <div class="container text-center py-5">
       <a href="/index.html" class="btn btn-warning" role="button" aria-disabled="true">Voltar</a>
     </div>
-
   </div>
 
   <footer class="d-flex justify-content-center align-items-center py-3 my-4 border-top mt-auto">
-    <div class="d-flex align-items-center text-center"> <!--preciso alinhar essa div a o centro da tela  -->
+    <div class="d-flex align-items-center text-center">
       <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
         <img src="/img/icone.ico" alt="Bootstrap" width="40" height="40">
       </a>
       <span class="mb-3 mb-md-0 text-body-secondary">© 2024 Churrascão, Inc</span>
-      <!--
-      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
-      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
-      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
-    </ul>
-    -->
     </div>
   </footer>
 
@@ -74,38 +66,37 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="script.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-    var resultadoCarnes = JSON.parse(localStorage.getItem('resultadoCarnes'));
-    var bebidas = JSON.parse(localStorage.getItem('bebidas'));
-    var tbody = document.getElementById('tabela-resultados');
+      var resultadoCarnes = JSON.parse(localStorage.getItem('resultadoCarnes'));
+      var bebidas = JSON.parse(localStorage.getItem('bebidas'));
+      var tbody = document.getElementById('tabela-resultados');
 
-    // Adicionando os resultados das carnes na tabela
-    Object.keys(resultadoCarnes).forEach(function (tipo) {
-      var row = `<tr>
-              <td>${tipo}</td>
-              <td>${resultadoCarnes[tipo].adultos}</td>
-              <td>${resultadoCarnes[tipo].criancas}</td>
-            </tr>`;
-      tbody.innerHTML += row;
+      // Adicionando os resultados das carnes na tabela
+      Object.keys(resultadoCarnes).forEach(function (tipo) {
+        var row = `<tr>
+            <td>${tipo}</td>
+            <td>${resultadoCarnes[tipo].adultos}</td>
+            <td>${resultadoCarnes[tipo].criancas}</td>
+          </tr>`;
+        tbody.innerHTML += row;
+      });
+
+      // Adicionando os resultados das bebidas na tabela
+      if (bebidas.Cerveja && bebidas.Cerveja !== '0 latas') {
+        tbody.innerHTML += `<tr><td>Cerveja</td><td>${bebidas.Cerveja}</td><td>Proibido +18</td></tr>`;
+      }
+      if (bebidas.RefrigeranteAdultos && bebidas.RefrigeranteAdultos !== '0 latas') {
+        tbody.innerHTML += `<tr><td>Refrigerante (Adultos)</td><td>${bebidas.RefrigeranteAdultos}</td><td>0 latas</td></tr>`;
+      }
+      if (bebidas.RefrigeranteCriancas && bebidas.RefrigeranteCriancas !== '0 latas') {
+        tbody.innerHTML += `<tr><td>Refrigerante (Crianças)</td><td>0 latas</td><td>${bebidas.RefrigeranteCriancas}</td></tr>`;
+      }
+      if (bebidas.Vodka && bebidas.Vodka !== '0 garrafas') {
+        tbody.innerHTML += `<tr><td>Vodka</td><td>${bebidas.Vodka}</td><td>Proibido +18</td></tr>`;
+      }
     });
-
-    // Adicionando os resultados das bebidas na tabela
-    if (bebidas.Cerveja && bebidas.Cerveja !== '0 latas') {
-      tbody.innerHTML += `<tr><td>Cerveja</td><td>${bebidas.Cerveja}</td><td>Proibido +18</td></tr>`;
-    }
-    if (bebidas.RefrigeranteAdultos && bebidas.RefrigeranteAdultos !== '0 latas') {
-      tbody.innerHTML += `<tr><td>Refrigerante (Adultos)</td><td>${bebidas.RefrigeranteAdultos}</td><td>0 latas</td></tr>`;
-    }
-    if (bebidas.RefrigeranteCriancas && bebidas.RefrigeranteCriancas !== '0 latas') {
-      tbody.innerHTML += `<tr><td>Refrigerante (Crianças)</td><td>0 latas</td><td>${bebidas.RefrigeranteCriancas}</td></tr>`;
-    }
-    if (bebidas.Vodka && bebidas.Vodka !== '0 garrafas') {
-      tbody.innerHTML += `<tr><td>Vodka</td><td>${bebidas.Vodka}</td><td>Proibido +18</td></tr>`;
-    }
-  });
   </script>
 </body>
-
 </html>
+

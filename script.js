@@ -107,7 +107,8 @@ function calcularConsumo() {
     // Cálculo de bebidas
     var bebidas = {
         Cerveja: selecoesBebidas.includes("Cerveja") ? 6 * adultos + ' latas' : "0 latas",
-        Refrigerante: selecoesBebidas.includes("Refrigerante") ? 3 * adultos + 2 * criancas + ' latas' : "0 latas",
+        RefrigeranteAdultos: selecoesBebidas.includes("Refrigerante") ? 3 * adultos + ' latas' : "0 latas",
+        RefrigeranteCriancas: selecoesBebidas.includes("Refrigerante") ? 2 * criancas + ' latas' : "0 latas",
         Vodka: selecoesBebidas.includes("Vodka") ? adultos + ' garrafas' : "0 garrafas"
     };
 
