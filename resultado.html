@@ -75,37 +75,41 @@
   <script src="script.js"></script>
   <script>
     var resultadoCarnes = JSON.parse(localStorage.getItem('resultadoCarnes'));
-    var tbody = document.getElementById('tabela-resultados');
+var tbody = document.getElementById('tabela-resultados');
 
-    Object.keys(resultadoCarnes).forEach(function (tipo) {
-      var row = `<tr>
+Object.keys(resultadoCarnes).forEach(function (tipo) {
+  var row = `<tr>
               <td>${tipo}</td>
               <td>${resultadoCarnes[tipo].adultos}</td>
               <td>${resultadoCarnes[tipo].criancas}</td>
             </tr>`;
-      tbody.innerHTML += row;
-    });
+  tbody.innerHTML += row;
+});
 
-    // Atualizando a adição das bebidas com quantidades separadas
-    var cervejas = localStorage.getItem('totalCerveja') || '0 latas';
-    var refrisAdultos = localStorage.getItem('totalRefriAdultos') || '0 latas';
-    var refrisCriancas = localStorage.getItem('totalRefriCriancas') || '0 latas';
-    var vodkas = localStorage.getItem('totalVodka') || '0 garrafas';
+// Preparar linhas de bebidas baseadas nas seleções
+var cervejas = localStorage.getItem('totalCerveja');
+var refrisAdultos = localStorage.getItem('totalRefriAdultos');
+var refrisCriancas = localStorage.getItem('totalRefriCriancas');
+var vodkas = localStorage.getItem('totalVodka');
 
-    var bebidas = [
-      { nome: "Cervejas", quantidadeAdultos: cervejas, quantidadeCriancas: "Proibido +18" },
-      { nome: "Refrigerantes", quantidadeAdultos: refrisAdultos, quantidadeCriancas: refrisCriancas },
-      { nome: "Vodkas", quantidadeAdultos: vodkas, quantidadeCriancas: "Proibido +18" }
-    ];
+if (cervejas !== "0 latas") {
+  adicionaBebida("Cervejas", cervejas, "Proibido +18");
+}
+if (refrisAdultos !== "0 latas" || refrisCriancas !== "0 latas") {
+  adicionaBebida("Refrigerantes", refrisAdultos, refrisCriancas);
+}
+if (vodkas !== "0 garrafas") {
+  adicionaBebida("Vodkas", vodkas, "Proibido +18");
+}
 
-    bebidas.forEach(function (bebida) {
-      var row = `<tr>
-              <td>${bebida.nome}</td>
-              <td>${bebida.quantidadeAdultos}</td>
-              <td>${bebida.quantidadeCriancas}</td>
+function adicionaBebida(nome, quantidadeAdultos, quantidadeCriancas) {
+  var row = `<tr>
+              <td>${nome}</td>
+              <td>${quantidadeAdultos}</td>
+              <td>${quantidadeCriancas}</td>
             </tr>`;
-      tbody.innerHTML += row;
-    });
+  tbody.innerHTML += row;
+}
   </script>
 </body>
 
