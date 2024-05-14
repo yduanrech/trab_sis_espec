@@ -75,6 +75,7 @@
   <script src="script.js"></script>
   <script>
     var resultadoCarnes = JSON.parse(localStorage.getItem('resultadoCarnes'));
+var bebidas = JSON.parse(localStorage.getItem('bebidas'));
 var tbody = document.getElementById('tabela-resultados');
 
 Object.keys(resultadoCarnes).forEach(function (tipo) {
@@ -86,30 +87,16 @@ Object.keys(resultadoCarnes).forEach(function (tipo) {
   tbody.innerHTML += row;
 });
 
-// Preparar linhas de bebidas baseadas nas seleções
-var cervejas = localStorage.getItem('totalCerveja');
-var refrisAdultos = localStorage.getItem('totalRefriAdultos');
-var refrisCriancas = localStorage.getItem('totalRefriCriancas');
-var vodkas = localStorage.getItem('totalVodka');
-
-if (cervejas !== "0 latas") {
-  adicionaBebida("Cervejas", cervejas, "Proibido +18");
-}
-if (refrisAdultos !== "0 latas" || refrisCriancas !== "0 latas") {
-  adicionaBebida("Refrigerantes", refrisAdultos, refrisCriancas);
-}
-if (vodkas !== "0 garrafas") {
-  adicionaBebida("Vodkas", vodkas, "Proibido +18");
-}
-
-function adicionaBebida(nome, quantidadeAdultos, quantidadeCriancas) {
+Object.keys(bebidas).forEach(function (nome) {
+  var quantidadeAdultos = bebidas[nome].adultos || bebidas[nome];
+  var quantidadeCriancas = bebidas[nome].criancas || "Proibido +18";
   var row = `<tr>
               <td>${nome}</td>
               <td>${quantidadeAdultos}</td>
               <td>${quantidadeCriancas}</td>
             </tr>`;
   tbody.innerHTML += row;
-}
+});
   </script>
 </body>
 
