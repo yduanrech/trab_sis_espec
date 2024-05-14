@@ -76,10 +76,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="script.js"></script>
   <script>
+    document.addEventListener('DOMContentLoaded', function () {
     var resultadoCarnes = JSON.parse(localStorage.getItem('resultadoCarnes'));
     var bebidas = JSON.parse(localStorage.getItem('bebidas'));
     var tbody = document.getElementById('tabela-resultados');
 
+    // Adicionando os resultados das carnes na tabela
     Object.keys(resultadoCarnes).forEach(function (tipo) {
       var row = `<tr>
               <td>${tipo}</td>
@@ -89,16 +91,20 @@
       tbody.innerHTML += row;
     });
 
-    Object.keys(bebidas).forEach(function (nome) {
-      var quantidadeAdultos = bebidas[nome].adultos || bebidas[nome];
-      var quantidadeCriancas = bebidas[nome].criancas || "Proibido +18";
-      var row = `<tr>
-              <td>${nome}</td>
-              <td>${quantidadeAdultos}</td>
-              <td>${quantidadeCriancas}</td>
-            </tr>`;
-      tbody.innerHTML += row;
-    });
+    // Adicionando os resultados das bebidas na tabela
+    if (bebidas.Cerveja && bebidas.Cerveja !== '0 latas') {
+      tbody.innerHTML += `<tr><td>Cerveja</td><td>${bebidas.Cerveja}</td><td>Proibido +18</td></tr>`;
+    }
+    if (bebidas.RefrigeranteAdultos && bebidas.RefrigeranteAdultos !== '0 latas') {
+      tbody.innerHTML += `<tr><td>Refrigerante (Adultos)</td><td>${bebidas.RefrigeranteAdultos}</td><td>0 latas</td></tr>`;
+    }
+    if (bebidas.RefrigeranteCriancas && bebidas.RefrigeranteCriancas !== '0 latas') {
+      tbody.innerHTML += `<tr><td>Refrigerante (Crianças)</td><td>0 latas</td><td>${bebidas.RefrigeranteCriancas}</td></tr>`;
+    }
+    if (bebidas.Vodka && bebidas.Vodka !== '0 garrafas') {
+      tbody.innerHTML += `<tr><td>Vodka</td><td>${bebidas.Vodka}</td><td>Proibido +18</td></tr>`;
+    }
+  });
   </script>
 </body>
 
