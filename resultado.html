@@ -86,11 +86,8 @@
       if (bebidas.Cerveja && bebidas.Cerveja !== '0 latas') {
         tbody.innerHTML += `<tr><td>Cerveja</td><td>${bebidas.Cerveja}</td><td>Proibido +18</td></tr>`;
       }
-      if (bebidas.RefrigeranteAdultos && bebidas.RefrigeranteAdultos !== '0 latas') {
-        tbody.innerHTML += `<tr><td>Refrigerante (Adultos)</td><td>${bebidas.RefrigeranteAdultos}</td><td>0 latas</td></tr>`;
-      }
-      if (bebidas.RefrigeranteCriancas && bebidas.RefrigeranteCriancas !== '0 latas') {
-        tbody.innerHTML += `<tr><td>Refrigerante (Crianças)</td><td>0 latas</td><td>${bebidas.RefrigeranteCriancas}</td></tr>`;
+      if (bebidas.Refrigerante && (bebidas.Refrigerante.adultos !== '0 latas' || bebidas.Refrigerante.criancas !== '0 latas')) {
+        tbody.innerHTML += `<tr><td>Refrigerante</td><td>${bebidas.Refrigerante.adultos}</td><td>${bebidas.Refrigerante.criancas}</td></tr>`;
       }
       if (bebidas.Vodka && bebidas.Vodka !== '0 garrafas') {
         tbody.innerHTML += `<tr><td>Vodka</td><td>${bebidas.Vodka}</td><td>Proibido +18</td></tr>`;
@@ -99,4 +96,3 @@
   </script>
 </body>
 </html>
-
