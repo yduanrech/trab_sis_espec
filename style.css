@@ -61,3 +61,30 @@
   height: 100%;
   width: auto;
 }
+
+.mascote-container {
+  max-width: 100%;
+  overflow: hidden;
+}
+.mascote-container img {
+  width: 70%;
+  height: auto;
+  display: block;
+}
+body {
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
