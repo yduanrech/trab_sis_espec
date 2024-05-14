@@ -35,6 +35,7 @@
 
   <div class="container py-5">
     <h3 class="titulo">Consumo Calculado para o Churrasco</h3>
+    
     <table class="table table-striped">
       <thead>
         <tr>
@@ -48,6 +49,9 @@
         <!-- As linhas para bebidas serão adicionadas aqui também -->
       </tbody>
     </table>
+    <div id="dados-entrada" class="mb-4">
+      <!-- Os dados de entrada serão inseridos aqui pelo JavaScript -->
+    </div>
     <div class="container text-center py-5">
       <a href="/index.html" class="btn btn-warning" role="button" aria-disabled="true">Voltar</a>
     </div>
@@ -74,6 +78,7 @@
       var resultadoCarnes = JSON.parse(localStorage.getItem('resultadoCarnes'));
       var bebidas = JSON.parse(localStorage.getItem('bebidas'));
       var tbody = document.getElementById('tabela-resultados');
+      var dadosEntrada = document.getElementById('dados-entrada');
 
       // Map para traduzir o valor da duração para texto
       var duracaoTexto = {
@@ -82,10 +87,10 @@
         3: "Mais que 5 horas"
       };
 
-      // Adicionando os dados de entrada
-      tbody.innerHTML += `<tr><td>Quantidade de Adultos</td><td>${adultos}</td><td></td></tr>`;
-      tbody.innerHTML += `<tr><td>Quantidade de Crianças</td><td>${criancas}</td><td></td></tr>`;
-      tbody.innerHTML += `<tr><td>Duração do Evento</td><td>${duracaoTexto[duracao]}</td><td></td></tr>`;
+      // Adicionando os dados de entrada em parágrafos
+      dadosEntrada.innerHTML += `<p>Quantidade de Adultos: ${adultos}</p>`;
+      dadosEntrada.innerHTML += `<p>Quantidade de Crianças: ${criancas}</p>`;
+      dadosEntrada.innerHTML += `<p>Duração do Evento: ${duracaoTexto[duracao]}</p>`;
 
       // Adicionando os resultados das carnes na tabela
       Object.keys(resultadoCarnes).forEach(function (tipo) {
