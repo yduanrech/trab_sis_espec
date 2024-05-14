@@ -46,6 +46,13 @@ $(document).ready(function () {
 
     $(".next-step").click(function () {
         var nextStep = currentStep + 1;
+
+        // Verifica se o campo de quantidade de crianças está vazio e define como 0 se estiver
+        var criancasQuantidade = $("#criancasQuantidade");
+        if (criancasQuantidade.val() == "") {
+            criancasQuantidade.val('0');
+        }
+
         if (nextStep <= 4 && validateStep(currentStep)) {
             transitionStep(currentStep, nextStep);
         }
@@ -60,6 +67,13 @@ $(document).ready(function () {
 
     $('#multi-step-form').on('submit', function (event) {
         event.preventDefault();
+
+        // Verifica se o campo de quantidade de crianças está vazio e define como 0 se estiver
+        var criancasQuantidade = $("#criancasQuantidade");
+        if (criancasQuantidade.val() == "") {
+            criancasQuantidade.val('0');
+        }
+
         if (validateStep(currentStep)) {
             calcularConsumo();
             window.location.href = 'resultado.html'; // Redireciona para a página de resultados

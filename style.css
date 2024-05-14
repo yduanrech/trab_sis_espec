@@ -93,3 +93,8 @@ body {
   margin-top: 3rem;
   padding-bottom: 0.5rem;
 }
+
+.form-check-input:checked {
+  background-color: #FFC107;
+  border-color: #FFC107;
+}
