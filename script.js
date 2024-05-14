@@ -114,6 +114,10 @@ function calcularConsumo() {
         Vodka: selecoesBebidas.includes("Vodka") ? adultos + ' garrafas' : "0 garrafas"
     };
 
+    // Salvando os dados no localStorage
+    localStorage.setItem('adultos', adultos);
+    localStorage.setItem('criancas', criancas);
+    localStorage.setItem('duracao', duracao);
     localStorage.setItem('resultadoCarnes', JSON.stringify(resultadoCarnes));
     localStorage.setItem('bebidas', JSON.stringify(bebidas));
 
