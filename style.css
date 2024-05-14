@@ -1,49 +1,52 @@
 #container {
-    max-width: 550px;  
-  }
-  
-  .step-container {
-    position: relative;
-    text-align: center;
-    transform: translateY(-43%);
-  }
- 
-  .step-circle {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #fff;
-    border: 2px solid #FFC107;
-    line-height: 30px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 10px;
-    cursor: pointer; /* Added cursor pointer */
-  }
-
-  .custom-progress-bar {
-    background-color: #FFC107; /* Altere para a cor desejada */
+  max-width: 550px;
 }
 
-  
-  .step-line {
-    position: absolute;
-    top: 16px;
-    left: 50px;
-    width: calc(100% - 100px);
-    height: 2px;
-    background-color: #FFC107;
-    z-index: -1;
-  }
-  
-  #multi-step-form{
-    overflow-x: hidden;
-  }
+.step-container {
+  position: relative;
+  text-align: center;
+  transform: translateY(-43%);
+}
+
+.step-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 2px solid #FFC107;
+  line-height: 30px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+  /* Added cursor pointer */
+}
+
+.custom-progress-bar {
+  background-color: #FFC107;
+  /* Altere para a cor desejada */
+}
+
+
+.step-line {
+  position: absolute;
+  top: 16px;
+  left: 50px;
+  width: calc(100% - 100px);
+  height: 2px;
+  background-color: #FFC107;
+  z-index: -1;
+}
+
+#multi-step-form {
+  overflow-x: hidden;
+}
 
 .text-danger {
-    color: #dc3545; /* Cor vermelha típica para erros */
+  color: #dc3545;
+  /* Cor vermelha típica para erros */
 }
 
 .navbar-brand {
