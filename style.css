@@ -88,3 +88,8 @@ body {
   align-items: center;
   text-align: center;
 }
+
+.titulo-resumo{
+  margin-top: 3rem;
+  padding-bottom: 0.5rem;
+}
