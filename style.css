@@ -56,3 +56,8 @@
 .nav-link {
   font-weight: 500;
 }
+
+#principal {
+  height: 100%;
+  width: auto;
+}
