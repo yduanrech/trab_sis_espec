@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/img/icone.ico"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>Churrascão</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+  <nav class="navbar navbar-expand-lg bg-warning border-bottom border-body">
+    <div class="container-fluid">
+      <img src="/img/icone.ico" alt="Bootstrap" width="44" height="45">
+      <span class="navbar-brand">Churrascão</span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/index.html">Início</a>
+          </li>
+        </ul>
+        <span class="navbar-text">
+          Saiba o tamanho do seu churrasco!
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-5">
+    <h3 class="titulo">Consumo Calculado para o Churrasco</h3>
+    
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Item</th>
+          <th scope="col">Quantidade Adultos</th>
+          <th scope="col">Quantidade Crianças</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-resultados">
+        <!-- Os resultados de carnes serão inseridos aqui pelo JavaScript -->
+        <!-- As linhas para bebidas serão adicionadas aqui também -->
+      </tbody>
+    </table>
+    <h4 class="titulo-resumo">Resumo</h4>
+    <div id="dados-entrada" class="mb-4">
+      <!-- Os dados de entrada serão inseridos aqui pelo JavaScript -->
+    </div>
+    <div class="container text-center py-5">
+      <a href="/index.html" class="btn btn-warning" role="button" aria-disabled="true">Voltar</a>
+    </div>
+  </div>
+
+  <footer class="d-flex justify-content-center align-items-center py-3 my-4 border-top mt-auto">
+    <div class="d-flex align-items-center text-center">
+      <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+        <img src="/img/icone.ico" alt="Bootstrap" width="40" height="40">
+      </a>
+      <span class="mb-3 mb-md-0 text-body-secondary">© 2024 Churrascão, Inc</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var adultos = localStorage.getItem('adultos');
+      var criancas = localStorage.getItem('criancas');
+      var duracao = localStorage.getItem('duracao');
+      var resultadoCarnes = JSON.parse(localStorage.getItem('resultadoCarnes'));
+      var bebidas = JSON.parse(localStorage.getItem('bebidas'));
+      var tbody = document.getElementById('tabela-resultados');
+      var dadosEntrada = document.getElementById('dados-entrada');
+
+      // Map para traduzir o valor da duração para texto
+      var duracaoTexto = {
+        1: "2 Horas",
+        2: "Entre 2 e 5 horas",
+        3: "Mais que 5 horas"
+      };
+
+      // Adicionando os dados de entrada em parágrafos
+      dadosEntrada.innerHTML += `<p><b>Quantidade de Adultos:</b> ${adultos}</p>`;
+      dadosEntrada.innerHTML += `<p><b>Quantidade de Crianças:</b> ${criancas}</p>`;
+      dadosEntrada.innerHTML += `<p><b>Duração do Evento:</b> ${duracaoTexto[duracao]}</p>`;
+
+      // Adicionando os resultados das carnes na tabela
+      Object.keys(resultadoCarnes).forEach(function (tipo) {
+        var row = `<tr>
+            <td>${tipo}</td>
+            <td>${resultadoCarnes[tipo].adultos}</td>
+            <td>${resultadoCarnes[tipo].criancas}</td>
+          </tr>`;
+        tbody.innerHTML += row;
+      });
+
+      // Adicionando os resultados das bebidas na tabela
+      if (bebidas.Cerveja && bebidas.Cerveja !== '0 latas') {
+        tbody.innerHTML += `<tr><td>Cerveja</td><td>${bebidas.Cerveja}</td><td>Proibido +18</td></tr>`;
+      }
+      if (bebidas.Refrigerante && (bebidas.Refrigerante.adultos !== '0 latas' || bebidas.Refrigerante.criancas !== '0 latas')) {
+        tbody.innerHTML += `<tr><td>Refrigerante</td><td>${bebidas.Refrigerante.adultos}</td><td>${bebidas.Refrigerante.criancas}</td></tr>`;
+      }
+      if (bebidas.Vodka && bebidas.Vodka !== '0 garrafas') {
+        tbody.innerHTML += `<tr><td>Vodka</td><td>${bebidas.Vodka}</td><td>Proibido +18</td></tr>`;
+      }
+    });
+  </script>
+</body>
+</html>
