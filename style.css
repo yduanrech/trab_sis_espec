@@ -53,7 +53,7 @@
   font-weight: 800;
 }
 
-.nav-link {
+.nav-item {
   font-weight: 500;
 }
 
@@ -102,3 +102,4 @@ body {
 .mascote {
   padding-top: 2rem;
 }
+
