@@ -103,3 +103,6 @@ body {
   padding-top: 2rem;
 }
 
+.cremoto:hover {
+  font-weight: 500;
+}
