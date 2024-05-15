@@ -52,9 +52,9 @@ Bebidas:
 
 Preciso fazer um site em HTML e CSS e um algoritmo para rodar as especificações acima.
 
-Quero uma pagina para selecionar a quantidade de pessoas, Adultos e Crianças
-Uma pagina para selecionar a quantidade de horas (<3, 3 até 6, 6>)
-Depois uma página para selecionar as carnes.
-Outra pagina para selecionar as bebidas
-E a página dos resultados.
+pagina para selecionar a quantidade de pessoas, Adultos e Crianças
+pagina para selecionar a quantidade de horas (<3, 3 até 6, 6>)
+página para selecionar as carnes.
+pagina para selecionar as bebidas
+página dos resultados.
  
