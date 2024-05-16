@@ -99,10 +99,12 @@ body {
   border-color: #FFC107;
 }
 
-.mascote {
-  padding-top: 2rem;
-}
+
 
 .cremoto:hover {
   font-weight: 500;
+}
+
+#carouselExampleAutoplaying {
+  max-height: 4;
 }
