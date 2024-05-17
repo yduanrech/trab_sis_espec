@@ -56,10 +56,6 @@
 }
 
 
-
-
-
-
 .titulo-resumo{
   margin-top: 3rem;
   padding-bottom: 0.5rem;
@@ -84,4 +80,9 @@ body {
 
 footer {
   margin-top: auto;
+}
+
+.mascote1 {
+  height: 25rem;
+  width: auto;
 }
