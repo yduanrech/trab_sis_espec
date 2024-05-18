@@ -98,14 +98,14 @@ function calcularConsumo() {
 
     var carnePorAdulto, carnePorCrianca;
     if (duracao === 1) {
-        carnePorAdulto = 500;
+        carnePorAdulto = 300;
     } else if (duracao === 2) {
-        carnePorAdulto = 700;
+        carnePorAdulto = 500;
     } else if (duracao === 3) {
-        carnePorAdulto = 850;
+        carnePorAdulto = 700;
     }
 
-    carnePorCrianca = carnePorAdulto * 0.4;  // Assume crianças consomem 40% do adulto
+    carnePorCrianca = carnePorAdulto * 0.3;  // Assume crianças consomem 40% do adulto
 
     var carnePorTipoAdulto = carnePorAdulto / quantCarnes;
     var carnePorTipoCrianca = carnePorCrianca / quantCarnes;
@@ -120,10 +120,10 @@ function calcularConsumo() {
 
     // Cálculo de bebidas
     var bebidas = {
-        Cerveja: selecoesBebidas.includes("Cerveja") ? 6 * adultos + ' latas' : "0 latas",
+        Cerveja: selecoesBebidas.includes("Cerveja") ? 4 * adultos + ' latas' : "0 latas",
         Refrigerante: selecoesBebidas.includes("Refrigerante") ? {
-            adultos: 3 * adultos + ' latas',
-            criancas: 2 * criancas + ' latas'
+            adultos: 2 * adultos + ' latas',
+            criancas: 1 * criancas + ' latas'
         } : { adultos: "0 latas", criancas: "0 latas" },
         Vodka: selecoesBebidas.includes("Vodka") ? adultos + ' garrafas' : "0 garrafas"
     };
