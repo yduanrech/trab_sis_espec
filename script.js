@@ -105,7 +105,7 @@ function calcularConsumo() {
         carnePorAdulto = 700;
     }
 
-    carnePorCrianca = carnePorAdulto * 0.3;  // Assume crianças consomem 40% do adulto
+    carnePorCrianca = carnePorAdulto * 0.4;  // crianças consomem 40% do adulto
 
     var carnePorTipoAdulto = carnePorAdulto / quantCarnes;
     var carnePorTipoCrianca = carnePorCrianca / quantCarnes;
@@ -125,7 +125,7 @@ function calcularConsumo() {
             adultos: 2 * adultos + ' latas',
             criancas: 1 * criancas + ' latas'
         } : { adultos: "0 latas", criancas: "0 latas" },
-        Vodka: selecoesBebidas.includes("Vodka") ? adultos + ' garrafas' : "0 garrafas"
+        Vodka: selecoesBebidas.includes("Vodka") ? Math.ceil(adultos / 5) + ' garrafas' : "0 garrafas"
     };
 
     // Salvando os dados no localStorage
