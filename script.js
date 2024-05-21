@@ -125,7 +125,7 @@ function calcularConsumo() {
             adultos: 2 * adultos + ' latas',
             criancas: 1 * criancas + ' latas'
         } : { adultos: "0 latas", criancas: "0 latas" },
-        Vodka: selecoesBebidas.includes("Vodka") ? Math.ceil(adultos / 5) + ' garrafas' : "0 garrafas"
+        Vodka: selecoesBebidas.includes("Vodka") ? Math.ceil(adultos /7) + ' garrafas' : "0 garrafas"
     };
 
     // Salvando os dados no localStorage
